@@ -1,0 +1,68 @@
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+int pivotSearch(int arr[], int n){
+    int s=0, e=n-1, mid=s+(e-s)/2;
+
+    while(s<e){
+        if (arr[mid]>=arr[0])
+        {
+            s=mid+1;
+        }
+        else {
+            e=mid;
+        }
+        mid=s+(e-s)/2;
+    }
+    return s;
+}
+
+int binarySearch(int arr[],int m, int key){
+    int s=0, e=m-1;
+    int mid=s+(e-s)/2;;
+     
+    while(s<=e)
+    {    if (arr[mid]>key){
+            e=mid-1;
+        }
+        else if(arr[mid]<key){
+            s=mid+1;
+        }
+        else{
+            return mid+1;
+        }
+        mid=s+(e-s)/2;}
+
+        return -1;
+
+}
+
+int findPosition(int arr[], int pivot, int key, int n ){
+    int s=0, e=n-1;
+    if (arr[0]>key){
+        s=pivot;
+        n=e-s+1;
+        
+    }
+    else{
+        e=pivot;
+        n=e-s;
+    }
+    int ans= binarySearch(arr, n, key);
+    return ans;
+}
+int main(){
+    int arr[]={2,3,5, 7,9,0,1};
+    int n=sizeof(arr)/sizeof(arr[0]);
+
+    int pivot= pivotSearch(arr, n);
+    cout<<pivot<<endl;
+    int key;
+    cout<<"enter what you're looking for: ";
+    cin>>key;
+
+    cout<<findPosition(arr, pivot, key, n);
+    
+}
