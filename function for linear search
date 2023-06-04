@@ -1,0 +1,13 @@
+
+
+int linearSearch(int *arr, int n, int x)
+{
+    if (n==0){
+        return -1;
+    }
+    if (arr[n-1]==x){
+        return n-1;
+    }
+    return linearSearch( arr,  n-1,  x);
+    //Write your code here
+}
