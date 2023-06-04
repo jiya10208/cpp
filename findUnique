@@ -1,0 +1,20 @@
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+int findUnique(int *arr, int size) {
+  sort(arr, arr + size);
+  int ans=0;
+  if (size == 0|| size==1 and ans==0) {
+    return arr[size-1];
+  }
+
+  if ((arr[size-1]!=arr[size-2]) ){
+    ans = arr[size-1];
+    return arr[size-1];
+    return findUnique(arr, size-1);
+
+  }
+  else
+    return findUnique(arr, size-2);
+}
